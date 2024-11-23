@@ -69,7 +69,7 @@ void exitButton(int x, int y, int size, Font font) {
         sizeX = size;
         sizeY = size;
     }
-    ButtonState button = ZiDrawButton("X", x, y, sizeX, sizeY, font, GRAY, RED, DARKGRAY, NULL);
+    ButtonState button = ZiDrawButton("X", x, y, sizeX, sizeY, font, GRAY, RED, DARKGRAY, (int)NULL);
     if (button == BUTTON_CLICK_LEFT) state.isExit = true;
 }
 

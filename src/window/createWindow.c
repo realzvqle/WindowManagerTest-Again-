@@ -15,8 +15,8 @@ void SpawnWindow(zivWindow* window, Color titleBarColor, Color titleBarColorHove
     window->sizeYPast = window->sizeY;
 
     if(isResizeable) resize(window, windowColor, windowColorHover);
-    ZiDrawButton("", window->x, window->y, window->sizeX, window->sizeY, state.font, windowColor, WHITE, windowColorHover, NULL);
-    ButtonState bar = ZiDrawButton(titleBarTitle, window->x, window->y - 30, window->sizeX, 30, state.font, titleBarColor, WHITE, titleBarColorHover, NULL);
+    ZiDrawButton("", window->x, window->y, window->sizeX, window->sizeY, state.font, windowColor, WHITE, windowColorHover, (int)NULL);
+    ButtonState bar = ZiDrawButton(titleBarTitle, window->x, window->y - 30, window->sizeX, 30, state.font, titleBarColor, WHITE, titleBarColorHover, (int)NULL);
     
     if (bar == BUTTON_DOWN_LEFT || window->isDragging) {
         if (!window->isDragging) {
