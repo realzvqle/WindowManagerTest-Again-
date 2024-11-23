@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BUTTON_H_INCLUDED
+#define BUTTON_H_INCLUDED
 #include "drawText.h"
 
 
@@ -16,4 +17,6 @@ typedef enum ButtonState{
 
 
 ButtonState drawButton(char* text, int x, int y, int sizeX, int sizeY, Font font, Color baseColor, Color textColor, Color hoverColor, int textSize);
-void exitButton(int x, int y, int size, Font font, state* state);
+void exitButton(int x, int y, int size, Font font);
+
+#endif

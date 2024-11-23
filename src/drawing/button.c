@@ -1,7 +1,7 @@
 #include "button.h"
 
 
-
+extern pstate state;
 
 
 ButtonState drawButton(char* text, int x, int y, int sizeX, int sizeY, Font font, Color baseColor, Color textColor, Color hoverColor, int textSize) {
@@ -58,7 +58,7 @@ ButtonState drawButton(char* text, int x, int y, int sizeX, int sizeY, Font font
 
 
 
-void exitButton(int x, int y, int size, Font font, state* state) {
+void exitButton(int x, int y, int size, Font font) {
     int sizeX;
     int sizeY;
     if (!size) {
@@ -70,6 +70,6 @@ void exitButton(int x, int y, int size, Font font, state* state) {
         sizeY = size;
     }
     ButtonState button = drawButton("X", x, y, sizeX, sizeY, font, GRAY, RED, DARKGRAY, NULL);
-    if (button == BUTTON_CLICK_LEFT) state->isExit = true;
+    if (button == BUTTON_CLICK_LEFT) state.isExit = true;
 }
 

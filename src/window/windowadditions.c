@@ -1,14 +1,14 @@
 #include "windowaddition.h"
 
 
+extern pstate state;
 
 
-
-static void handleResizeButton(zivWindow* window, state* state, Color windowColor, Color windowColorHover) {
+static void handleResizeButton(zivWindow* window, Color windowColor, Color windowColorHover) {
     window->resizeButtonHeight = 30;
     window->resizeButtonGap = 0;
 
-    ButtonState underResize = drawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, state->font, windowColor, WHITE, windowColorHover, NULL);
+    ButtonState underResize = drawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, state.font, windowColor, WHITE, windowColorHover, NULL);
 
     if (underResize == BUTTON_DOWN_LEFT || window->isResizing) {
         if (!window->isResizing) {
@@ -36,11 +36,11 @@ static void handleResizeStop(zivWindow* window) {
     }
 }
 
-void resize(zivWindow* window, state* state, Color windowColor, Color windowColorHover) {
+void resize(zivWindow* window, Color windowColor, Color windowColorHover) {
     printf("window-prevsize: %d, %d -- window-currentsize: %d, %d\n", window->prevSizeX, window->prevSizeY, window->sizeX, window->sizeY);
 
     if (window->prevSizeX <= window->sizeX && window->prevSizeY <= window->sizeY) {
-        handleResizeButton(window, state, windowColor, windowColorHover);
+        handleResizeButton(window, windowColor, windowColorHover);
     }
 
     handleResizeStop(window);
