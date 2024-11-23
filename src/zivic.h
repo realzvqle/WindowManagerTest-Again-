@@ -6,7 +6,9 @@
 
 #include "startportabledesktop.h"
 
-
+#define fail(message, ...) printf("[-] " message, ##__VA_ARGS__)
+#define pass(message, ...) printf("[+] " message, ##__VA_ARGS__)
+#define info(message, ...) printf("[!] " message, ##__VA_ARGS__)
 
 typedef struct _args {
 	int argc;

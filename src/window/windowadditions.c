@@ -8,7 +8,7 @@ static void handleResizeButton(zivWindow* window, Color windowColor, Color windo
     window->resizeButtonHeight = 30;
     window->resizeButtonGap = 0;
 
-    ButtonState underResize = drawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, state.font, windowColor, WHITE, windowColorHover, NULL);
+    ButtonState underResize = ZiDrawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, state.font, windowColor, WHITE, windowColorHover, NULL);
 
     if (underResize == BUTTON_DOWN_LEFT || window->isResizing) {
         if (!window->isResizing) {
@@ -37,7 +37,6 @@ static void handleResizeStop(zivWindow* window) {
 }
 
 void resize(zivWindow* window, Color windowColor, Color windowColorHover) {
-    printf("window-prevsize: %d, %d -- window-currentsize: %d, %d\n", window->prevSizeX, window->prevSizeY, window->sizeX, window->sizeY);
 
     if (window->prevSizeX <= window->sizeX && window->prevSizeY <= window->sizeY) {
         handleResizeButton(window, windowColor, windowColorHover);

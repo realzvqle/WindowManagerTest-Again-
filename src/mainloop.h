@@ -4,8 +4,7 @@
 
 
 
-
-bool mainLoop();
+bool MainLoop();
 
 
 

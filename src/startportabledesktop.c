@@ -26,7 +26,7 @@ int StartPortableDesktop() {
 		if (IsKeyPressed(KEY_F)) ToggleFullscreen();
 		BeginDrawing();
 		ClearBackground(state.backgroundColor);
-		mainLoop();
+		MainLoop();
 		EndDrawing();
 	}
 	UnloadFont(state.font);

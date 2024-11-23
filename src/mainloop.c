@@ -5,7 +5,7 @@
 
 extern pstate state;
 
-static scene startEditor() {
+static scene StartEditor() {
 	scene scene;
 	scene.currentScene = 0;
 	scene.init = true;
@@ -13,14 +13,16 @@ static scene startEditor() {
 }
 
 
-bool mainLoop() {
+bool MainLoop() {
 	if (!state.scene.init) {
-		state.scene = startEditor();
-		ZiCreateTask(30, 30, 200, 100, "Hi!");
+		state.scene = StartEditor();
+		ZiCreateTask(200, 100, "Hi!");
 	}
 	
 	switch (state.scene.currentScene) {
 		case 0:
+			if(IsKeyPressed(KEY_A)) ZiCreateTask(200, 400, "Automatic WIndow");
+			else if(IsKeyPressed(KEY_B)) ZiKillTask(GetRandomValue(0,ZiGetCurrentWindowValue()));
 			Schedular();
 			break;
 		case 1:

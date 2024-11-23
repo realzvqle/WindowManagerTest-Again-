@@ -16,7 +16,7 @@ typedef enum ButtonState{
 
 
 
-ButtonState drawButton(char* text, int x, int y, int sizeX, int sizeY, Font font, Color baseColor, Color textColor, Color hoverColor, int textSize);
+ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Font font, Color baseColor, Color textColor, Color hoverColor, int textSize);
 void exitButton(int x, int y, int size, Font font);
 
 #endif

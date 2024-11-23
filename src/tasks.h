@@ -4,14 +4,24 @@
 #include "window/createWindow.h"
 
 
-void Schedular();
-void ZiCreateTask(int x, int y, int sizeX, int sizeY, char* title);
-
 
 
 typedef struct _TASK{
     zivWindow window;
     int pid;
+    bool running;
+    bool cleared;
 } TASK;
+
+
+typedef struct _TASKNUM{
+    int i;
+    bool shouldadd1;
+} TASKNUM;
+
+void Schedular();
+void ZiCreateTask(int sizeX, int sizeY, char* title);
+int ZiGetCurrentWindowValue();
+void ZiKillTask(int pid);
 
 #endif

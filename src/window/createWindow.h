@@ -30,7 +30,5 @@ typedef struct zivWindow {
 	char* title;
 } zivWindow;
 
-void spawnWindow(zivWindow* window);
-void spawnWindowEx(zivWindow* window, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, char* titleBarTitle, bool isResizeable);
-
+void SpawnWindow(zivWindow* window, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, char* titleBarTitle, bool isResizeable);
 #endif

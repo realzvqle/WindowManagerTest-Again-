@@ -4,7 +4,7 @@
 
 
 
-void drawText(char* text, int x, int y, int size, Font font, Color color);
+void ZiDrawText(char* text, int x, int y, int size, Font font, Color color);
 
 
 
