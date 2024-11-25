@@ -25,4 +25,8 @@ void ZiCreateTask(int sizeX, int sizeY, char* title);
 int ZiGetCurrentWindowValue();
 void ZiKillTask(int pid);
 void ZiCallTaskManager();
+
+
+// Lua Wrapper Functiosn
+int LuaCreateTask(lua_State *L);
 #endif

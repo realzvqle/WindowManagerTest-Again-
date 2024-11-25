@@ -2,7 +2,6 @@
 #include "task/tasks.h"
 #include "task/taskmanager.h"
 
-
 extern pstate state;
 
 static scene StartEditor() {
@@ -18,6 +17,7 @@ bool MainLoop() {
 		state.scene = StartEditor();
 		ZiCreateTask(200, 100, "Hi!");
 	}
+	
 	
 	switch (state.scene.currentScene) {
 		case 0:

@@ -12,8 +12,8 @@ target("zivic")
     add_linkdirs("lib") 
 
     if is_os("windows") then
-        add_links("raylibdll", "raylib") 
+        add_links("raylibdll", "raylib", "windows/liblua54.a") 
         add_syslinks("gdi32", "winmm") 
     else
-        add_links("libraylib.a") 
+        add_links("libraylib.a", "linux/liblua54.a") 
     end

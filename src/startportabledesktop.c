@@ -1,6 +1,8 @@
 #include "startportabledesktop.h"
 #include "zivic.h"
 #include "mainloop.h"
+#include "luaapi/luaapi.h"
+
 extern pstate state;
 static raywindow SetupPortableDesktop() {
 	raywindow window;
@@ -14,10 +16,15 @@ static raywindow SetupPortableDesktop() {
 
 
 int StartPortableDesktop() {
+	
 	state.isExit = false;
 	state.isWindowSpawned = false;
 	state.mainWindow = SetupPortableDesktop();
 	state.backgroundColor = BLACK;
+	
+	state.L = luaL_newstate();
+	luaL_openlibs(state.L);
+	lua_register(state.L, "CreateTask", LuaCreateTask);
 	SetTraceLogLevel(LOG_ERROR);
 	InitWindow(state.mainWindow.sizeX, state.mainWindow.sizeY, state.mainWindow.name);
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
