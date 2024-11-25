@@ -14,5 +14,5 @@ target("zivic")
         add_links("raylibdll", "raylib") 
         add_syslinks("gdi32", "winmm", "kernel32") 
     else
-        add_links("libraylib.a", "liblua54.a") 
+        add_links("libraylib.a") 
     end
