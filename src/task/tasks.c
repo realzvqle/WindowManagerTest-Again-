@@ -29,18 +29,23 @@ void Schedular() {
             continue;
         }
         SpawnWindow(&tasks[i].window, &tasks[i], DARKGRAY, DARKBLUE, WHITE, LIGHTGRAY, GREEN, tasks[i].window.title, true);
+        if(tasks[i].taskfunction != NULL){
+            tasks[i].taskfunction(tasks[i]);
+        }
+        
     }
     DrawFPS(10, 10);
 }
 
 
 
-void ZiCreateTask(int sizeX, int sizeY, char* title){
+TASK ZiCreateTask(int sizeX, int sizeY, const char* title, int (*taskfunction)(struct _TASK), void* content){
     TASKNUM num = ZiGetFreeTaskNumber();
     int z = num.i;
     if(num.shouldadd1 && currentwindow >= 512) {
         fail("LIMIT REACHED\n");
-        return;
+        TASK task = {0, 0, 0, 0};
+        return task;
     }
     tasks[z].window.x = GetRandomValue(0, GetScreenWidth());
     tasks[z].window.y = GetRandomValue(0, GetScreenHeight());
@@ -50,8 +55,11 @@ void ZiCreateTask(int sizeX, int sizeY, char* title){
     tasks[z].cleared = false;
     tasks[z].window.title = title;
     tasks[z].pid = z;
+    tasks[z].taskfunction = taskfunction;
+    tasks[z].content = content;
     if(num.shouldadd1) currentwindow++;
     info("Created a task with PID %d, Current Window is %d\n", tasks[z].pid, currentwindow);
+    return tasks[z];
 }
 
 int ZiGetCurrentWindowValue(){

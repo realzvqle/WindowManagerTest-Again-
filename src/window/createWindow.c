@@ -5,7 +5,7 @@ extern pstate state;
 
 
 
-void SpawnWindow(zivWindow* window, void* task, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, char* titleBarTitle, bool isResizeable) {
+void SpawnWindow(zivWindow* window, void* task, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, const char* titleBarTitle, bool isResizeable) {
     //TASK* tasks = task;
     if (!window->init) {
         window->prevSizeX = window->sizeX;

@@ -27,9 +27,9 @@ typedef struct zivWindow {
 	int resizeButtonGap;
 	double resizeStopDelay;
 	bool init;
-	char* title;
+	const char* title;
 } zivWindow;
 
 
-void SpawnWindow(zivWindow* window, void* task, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, char* titleBarTitle, bool isResizeable);
+void SpawnWindow(zivWindow* window, void* task, Color titleBarColor, Color titleBarColorHover, Color windowColor, Color windowColorHover, Color textColor, const char* titleBarTitle, bool isResizeable);
 #endif

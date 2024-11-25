@@ -12,6 +12,8 @@ typedef struct _TASK{
     bool running;
     bool cleared;
     bool hidden;
+    int (*taskfunction)(struct _TASK); 
+    void* content;
 } TASK;
 
 
@@ -21,11 +23,9 @@ typedef struct _TASKNUM{
 } TASKNUM;
 
 void Schedular();
-void ZiCreateTask(int sizeX, int sizeY, char* title);
 int ZiGetCurrentWindowValue();
 void ZiKillTask(int pid);
 void ZiCallTaskManager();
-
-
+TASK ZiCreateTask(int sizeX, int sizeY, const char* title, int (*taskfunction)(struct _TASK), void* content);
 
 #endif

@@ -4,7 +4,7 @@
 extern pstate state;
 
 
-ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Color baseColor, Color textColor, Color hoverColor, int textSize) {
+ButtonState ZiDrawButton(const char* text, int x, int y, int sizeX, int sizeY, Color baseColor, Color textColor, Color hoverColor, int textSize) {
     if (!textSize) {
         textSize = sizeY / 1.5;
     }
