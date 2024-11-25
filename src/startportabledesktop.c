@@ -21,7 +21,7 @@ int StartPortableDesktop() {
 	SetTraceLogLevel(LOG_ERROR);
 	InitWindow(state.mainWindow.sizeX, state.mainWindow.sizeY, state.mainWindow.name);
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
-	state.font = LoadFontEx("resources\\fonts\\Mukta-ExtraBold.ttf", 400, NULL, 0);
+	state.font = LoadFontEx("resources/fonts/Mukta-ExtraBold.ttf", 400, NULL, 0);
 	while (!WindowShouldClose() && !state.isExit) {
 		if (IsKeyPressed(KEY_F)) ToggleFullscreen();
 		BeginDrawing();
