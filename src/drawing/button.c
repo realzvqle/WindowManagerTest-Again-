@@ -4,9 +4,9 @@
 extern pstate state;
 
 
-ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Font font, Color baseColor, Color textColor, Color hoverColor, int textSize) {
+ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Color baseColor, Color textColor, Color hoverColor, int textSize) {
     if (!textSize) {
-        textSize = sizeY / 2;
+        textSize = sizeY / 1.5;
     }
     Rectangle recc =  { (float)x, (float)y, (float)sizeX, (float)sizeY };
     bool isMouseOver = CheckCollisionPointRec(GetMousePosition(), recc);
@@ -19,10 +19,10 @@ ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Font fo
         textWidth += MeasureText(&text[i], textSize);
     }
 
-    int textX = x + (sizeX - MeasureTextEx(font, text, textSize, 4).x) / 2;
+    int textX = x + (sizeX - MeasureTextEx(state.font, text, textSize, 4).x) / 2;
     int textY = y + (sizeY - textSize) / 2;
 
-    ZiDrawText(text, textX, textY, textSize, font, textColor);
+    ZiDrawText(text, textX, textY, textSize, textColor);
 
     if (isMouseOver && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Rectangle rec =  { (float)x, (float)y, (float)sizeX, (float)sizeY };
@@ -58,18 +58,18 @@ ButtonState ZiDrawButton(char* text, int x, int y, int sizeX, int sizeY, Font fo
 
 
 
-void exitButton(int x, int y, int size, Font font) {
-    int sizeX;
-    int sizeY;
-    if (!size) {
-        sizeX = 30;
-        sizeY = 30;
-    }
-    else {
-        sizeX = size;
-        sizeY = size;
-    }
-    ButtonState button = ZiDrawButton("X", x, y, sizeX, sizeY, font, GRAY, RED, DARKGRAY, (int)NULL);
-    if (button == BUTTON_CLICK_LEFT) state.isExit = true;
-}
+// void exitButton(int x, int y, int size, Font font) {
+//     int sizeX;
+//     int sizeY;
+//     if (!size) {
+//         sizeX = 30;
+//         sizeY = 30;
+//     }
+//     else {
+//         sizeX = size;
+//         sizeY = size;
+//     }
+//     ButtonState button = ZiDrawButton("X", x, y, sizeX, sizeY, GRAY, RED, DARKGRAY, (int)NULL);
+//     if (button == BUTTON_CLICK_LEFT) state.isExit = true;
+// }
 

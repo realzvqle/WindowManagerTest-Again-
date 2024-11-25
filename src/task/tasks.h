@@ -1,7 +1,7 @@
 #ifndef TASKS_H_INCLUDED
 #define TASKS_H_INCLUDED
-#include "drawing/button.h"
-#include "window/createWindow.h"
+#include "../drawing/button.h"
+#include "../window/createWindow.h"
 
 
 
@@ -11,6 +11,7 @@ typedef struct _TASK{
     int pid;
     bool running;
     bool cleared;
+    bool hidden;
 } TASK;
 
 
@@ -23,5 +24,5 @@ void Schedular();
 void ZiCreateTask(int sizeX, int sizeY, char* title);
 int ZiGetCurrentWindowValue();
 void ZiKillTask(int pid);
-
+void ZiCallTaskManager();
 #endif

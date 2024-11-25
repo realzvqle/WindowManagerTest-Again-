@@ -1,5 +1,5 @@
+#include "createWindow.h"
 #include "windowaddition.h"
-
 
 extern pstate state;
 
@@ -8,7 +8,7 @@ static void handleResizeButton(zivWindow* window, Color windowColor, Color windo
     window->resizeButtonHeight = 30;
     window->resizeButtonGap = 0;
 
-    ButtonState underResize = ZiDrawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, state.font, windowColor, WHITE, windowColorHover, (int)NULL);
+    ButtonState underResize = ZiDrawButton("", window->x, window->y + window->sizeY + window->resizeButtonGap, window->sizeX, window->resizeButtonHeight, windowColor, WHITE, windowColorHover, (int)NULL);
 
     if (underResize == BUTTON_DOWN_LEFT || window->isResizing) {
         if (!window->isResizing) {
@@ -43,4 +43,23 @@ void resize(zivWindow* window, Color windowColor, Color windowColorHover) {
     }
 
     handleResizeStop(window);
+}
+
+void Exitbutton(zivWindow* window, TASK* task){
+    int sizeX = 30;
+    int sizeY = 30;
+    
+    ButtonState button = ZiDrawButton("X", window->x + window->sizeX, window->y - 30, sizeX, sizeY, GRAY, RED, DARKGRAY, (int)30);
+    if (button == BUTTON_CLICK_LEFT) task->running = false;
+}
+
+void Hidebutton(zivWindow* window, TASK* task){
+    int sizeX = 30;
+    int sizeY = 30;
+    
+    ButtonState button = ZiDrawButton("H", window->x + window->sizeX, window->y, sizeX, sizeY, GRAY, BLUE, DARKGRAY, (int)30);
+    if (button == BUTTON_CLICK_LEFT){
+        if(task->hidden == true) task->hidden = false;
+        else task->hidden = true;
+    } 
 }

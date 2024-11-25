@@ -1,5 +1,5 @@
-#include "tasks.h"
-#include "zivic.h"
+#include "../task/tasks.h"
+#include "../zivic.h"
 
 
 TASK tasks[512];
@@ -22,9 +22,13 @@ void Schedular() {
     for(int i = 0; i < currentwindow; i++){
         if(tasks[i].running == false){
             tasks[i].cleared = true;
+            tasks[i].hidden = false;
             continue;
         } 
-        SpawnWindow(&tasks[i].window, DARKGRAY, DARKBLUE, WHITE, LIGHTGRAY, GREEN, tasks[i].window.title, true);
+        if(tasks[i].hidden == true){
+            continue;
+        }
+        SpawnWindow(&tasks[i].window, &tasks[i], DARKGRAY, DARKBLUE, WHITE, LIGHTGRAY, GREEN, tasks[i].window.title, true);
     }
     DrawFPS(10, 10);
 }
@@ -53,5 +57,9 @@ int ZiGetCurrentWindowValue(){
 void ZiKillTask(int pid){
     if(pid > currentwindow) return;
     tasks[pid].running = false;
+}
+
+void ZiCallTaskManager(){
+    state.scene.currentScene = 2;
 }
 

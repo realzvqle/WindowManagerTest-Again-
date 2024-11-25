@@ -1,6 +1,6 @@
 #include "mainloop.h"
-#include "tasks.h"
-
+#include "task/tasks.h"
+#include "task/taskmanager.h"
 
 
 extern pstate state;
@@ -21,14 +21,20 @@ bool MainLoop() {
 	
 	switch (state.scene.currentScene) {
 		case 0:
-			if(IsKeyPressed(KEY_A)) ZiCreateTask(200, 400, "Automatic WIndow");
+			if(IsKeyPressed(KEY_A)) ZiCreateTask(300, 400, "Automatic WIndow");
 			else if(IsKeyPressed(KEY_B)) ZiKillTask(GetRandomValue(0,ZiGetCurrentWindowValue()));
+			if(IsKeyPressed(KEY_Y)) ZiCallTaskManager();
 			Schedular();
 			break;
 		case 1:
 		{
 			Color tempColor = { 0, 0, 50, 255 };
 			state.backgroundColor = tempColor;
+			break;
+		}
+		case 2:
+		{
+			TaskManager();
 			break;
 		}
 		default:
