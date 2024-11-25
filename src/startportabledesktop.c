@@ -1,4 +1,5 @@
 #include "startportabledesktop.h"
+#include "extern/lua/lauxlib.h"
 #include "zivic.h"
 #include "mainloop.h"
 #include "luaapi/luaapi.h"
@@ -30,6 +31,8 @@ int StartPortableDesktop() {
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 	state.font = LoadFontEx("resources/fonts/Mukta-ExtraBold.ttf", 400, NULL, 0);
 	while (!WindowShouldClose() && !state.isExit) {
+			luaL_dostring(state.L, "CreateTask(\"L\", 300, 300)");
+
 		if (IsKeyPressed(KEY_F)) ToggleFullscreen();
 		BeginDrawing();
 		ClearBackground(state.backgroundColor);

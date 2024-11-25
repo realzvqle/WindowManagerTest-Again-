@@ -2,10 +2,10 @@
 #define ZIVIC_H_INCLUDED
 #include <stdio.h>
 #include "../headers/raylib.h"
-#include "../headers/lua.h"
-#include "../headers/lualib.h"
-#include "../headers/lauxlib.h"
-#include "../headers/luaconf.h"
+#include "extern/lua/lua.h"
+#include "extern/lua/lualib.h"
+#include "extern/lua/lauxlib.h"
+#include "extern/lua/luaconf.h"
 
 #include <stdint.h>
 

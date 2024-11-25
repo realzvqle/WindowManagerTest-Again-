@@ -27,6 +27,5 @@ void ZiKillTask(int pid);
 void ZiCallTaskManager();
 
 
-// Lua Wrapper Functiosn
-int LuaCreateTask(lua_State *L);
+
 #endif

@@ -38,6 +38,10 @@ void Schedular() {
 void ZiCreateTask(int sizeX, int sizeY, char* title){
     TASKNUM num = ZiGetFreeTaskNumber();
     int z = num.i;
+    if(num.shouldadd1 && currentwindow >= 512) {
+        fail("LIMIT REACHED\n");
+        return;
+    }
     tasks[z].window.x = GetRandomValue(0, GetScreenWidth());
     tasks[z].window.y = GetRandomValue(0, GetScreenHeight());
     tasks[z].window.sizeX = sizeX;
@@ -63,11 +67,4 @@ void ZiCallTaskManager(){
     state.scene.currentScene = 2;
 }
 
-int LuaCreateTask(lua_State *L) {
-    int x = luaL_checkinteger(L, 2);
-    int y = luaL_checkinteger(L, 3) + 90;
-    const char* text = luaL_checkstring(L, 1);
-    ZiCreateTask(x, y, text);
-    lua_pushnil(L);
-    return 0;
-}
+
